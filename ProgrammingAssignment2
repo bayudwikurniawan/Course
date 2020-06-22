@@ -1,0 +1,28 @@
+#In this function i just derived from cacheMean in the example assignment
+#Make a Matrix Function
+makeMatrix <- function(x=matrix()) {
+  i <- NULL
+  set <- function(y){
+    x <<- y       #Set the number of matrix
+    i <<- NULL
+  }
+  get <- function() x
+  setInvers <- function(invers) i <<- invers #Set Inverse Function
+  getInvers <- function() i #Get the inverse matrix from operational matrix
+  list(set = set, get = get,
+       setInvers = setInvers, getInvers = getInvers) #Make a list
+}
+
+cacheMatrix <- function(x, ...){ #... for call another function in this case is solve
+  i <- x$getInvers()
+  #If the matriks is non singular
+  if(!is.null(i)) {
+    message("getting cached data")
+    return(i)
+  }
+  data <- x$get()
+  #Solve function is to get matriks (data) inverse
+  i <- solve(data, ...)
+  x$setInvers(i)
+  i
+}
