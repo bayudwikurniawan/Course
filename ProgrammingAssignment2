@@ -1,6 +1,6 @@
 #In this function i just derived from cacheMean in the example assignment
 #Make a Matrix Function
-makeMatrix <- function(x=matrix()) {
+makeCacheMatrix <- function(x=matrix()) {
   i <- NULL
   set <- function(y){
     x <<- y       #Set the number of matrix
@@ -13,7 +13,7 @@ makeMatrix <- function(x=matrix()) {
        setInvers = setInvers, getInvers = getInvers) #Make a list
 }
 
-cacheMatrix <- function(x, ...){ #... for call another function in this case is solve
+cacheSolve <- function(x, ...){ #... for call another function in this case is solve
   i <- x$getInvers()
   #If the matriks is non singular
   if(!is.null(i)) {
